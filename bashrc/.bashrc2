@@ -51,6 +51,8 @@ alias ssh101='ssh linux@10.1.64.101'
 fi
 
 if [ $PC == 101 ]; then 
+alias cdrepo='cd ~/Documents/MyRepo'
 alias screen_on='gnome-screensaver-command -d'
+alias europa_adas_devops='python3 ~/Documents/devops/devops.py'
 fi
 
