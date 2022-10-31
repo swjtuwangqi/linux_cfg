@@ -1,0 +1,40 @@
+[global_config]
+  handle_size = -3
+  title_inactive_bg_color = "#820f49"
+  enabled_plugins = CustomCommandsMenu, TestPlugin, ActivityWatch, TerminalShot, MavenPluginURLHandler
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#2e2f31"
+    background_darkness = 0.96
+    background_type = image
+    cursor_shape = ibeam
+    cursor_color = "#eee8d5"
+    font = Monospace 18
+    foreground_color = "#f3f0e7"
+    scrollback_lines = 50000
+    use_system_font = False
+    copy_on_selection = True
+    # background_image = /home/taowang/桌面/earth.jpg
+  [[Profile2]]
+    background_image = None
+[layouts]
+    [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 8175ace0-311b-41d7-9bda-d166a4987254
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 360:350
+      size =  1500, 900
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = 8175ace0-311b-41d7-9bda-d166a4987254
+      
+[plugins]

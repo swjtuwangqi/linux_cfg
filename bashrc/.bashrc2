@@ -1,0 +1,49 @@
+# ~/bashrc
+# if [ -f ~/.bashrc2 ]; then
+#   . ~/.bashrc2
+# fi
+
+# terminal prompt
+function my_color_prompt() { 
+    # color define
+   local last_cmd=$?
+   local txtreset='$(tput sgr0)'
+   local txtbold='$(tput bold)'
+   local txtblack='$(tput setaf 0)'
+   local txtred='$(tput setaf 1)'
+   local txtgreen='$(tput setaf 2)'
+   local txtyellow='$(tput setaf 3)'
+   local txtblue='$(tput setaf 4)'
+   local txtpurple='$(tput setaf 5)'
+   local txtcyan='$(tput setaf 6)'
+   local txtwhite='$(tput setaf 7)'
+   # unicode "✗"
+   local fancyx='\342\234\227'
+   # unicode "✓"
+   local checkmark='\342\234\223'
+
+   # : Full date + full time (24h)
+    PS1="\[$txtbold\]\[$txtwhite\]\n\D{%A %d %B %Y %H:%M:%S}\n"
+   # : current path
+    PS1+="\[$txtcyan\]\\w"
+   # green git branch
+    PS1+="\[$txtyellow\]$(__git_ps1 ' (%s)')\[$txtwhite\]\n"
+
+   # a red "✗" for last cmd the error number
+   if [[ $last_cmd != 0 ]]; then
+      PS1+="\[$txtred\]$fancyx \[$txtwhite\]($last_cmd)"
+   fi
+
+    PS1+=" \[$txtbold\]\[$txtblue\]\$ "
+   # input cmd color
+    PS1+=" \[$txtgreen\] "
+
+   export PS1
+}
+
+my_color_prompt 
+
+## alias 
+
+alias cdrepo='cd /mnt/d/MyRepo'
+
