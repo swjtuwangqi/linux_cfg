@@ -1,1 +1,0 @@
-cp .bashrc2 ~/.bashrc2 && source ~/.bashrc

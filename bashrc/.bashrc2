@@ -1,7 +1,28 @@
-# ~/bashrc
-# if [ -f ~/.bashrc2 ]; then
-#   . ~/.bashrc2
-# fi
+# vim ~/.bashrc 
+# add below code : 
+
+# cfg_path=/mnt/d/MyRepo/linux_cfg/bashrc/.bashrc2
+# cfg_path=~/Documents/MyRepo/linux_cfg/bashrc/.bashrc2
+
+# if [ -e  $cfg_path  ] ; then
+#   . $cfg_path 
+#   echo 'load bashrc2 cfg.'
+#  fi
+
+# # # # alias 
+PC=wsl
+
+if [ $PC == wsl ]; then
+alias cdrepo='cd /mnt/d/MyRepo'
+alias ssh101='ssh linux@10.1.64.101'
+fi
+
+if [ $PC == 101 ]; then 
+alias cdrepo='cd ~/Documents/MyRepo'
+alias screen_on='gnome-screensaver-command -d'
+alias europa_adas_devops='python3 ~/Documents/devops/devops.py'
+fi
+
 
 # terminal prompt
 function my_color_prompt() { 
@@ -43,16 +64,4 @@ function my_color_prompt() {
 
 my_color_prompt 
 
-## alias 
-PC=wsl
-if [ $PC == wsl ]; then
-alias cdrepo='cd /mnt/d/MyRepo'
-alias ssh101='ssh linux@10.1.64.101'
-fi
-
-if [ $PC == 101 ]; then 
-alias cdrepo='cd ~/Documents/MyRepo'
-alias screen_on='gnome-screensaver-command -d'
-alias europa_adas_devops='python3 ~/Documents/devops/devops.py'
-fi
 
