@@ -44,6 +44,13 @@ function my_color_prompt() {
 my_color_prompt 
 
 ## alias 
-
+PC=wsl
+if [ $PC == wsl ]; then
 alias cdrepo='cd /mnt/d/MyRepo'
+alias ssh101='ssh linux@10.1.64.101'
+fi
+
+if [ $PC == 101 ]; then 
+alias screen_on='gnome-screensaver-command -d'
+fi
 
