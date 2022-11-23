@@ -9,18 +9,10 @@
 #   echo 'load bashrc2 cfg.'
 #  fi
 
-# # # # alias 
-PC=wsl
-
-if [ $PC == wsl ]; then
-alias cdrepo='cd /mnt/d/MyRepo'
-alias ssh101='ssh linux@10.1.64.101'
-fi
-
-if [ $PC == 101 ]; then 
-alias cdrepo='cd ~/Documents/MyRepo'
-alias screen_on='gnome-screensaver-command -d'
-alias europa_adas_devops='python3 ~/Documents/devops/devops.py'
+alias_p=/mnt/d/MyRepo/linux_cfg/bashrc/alias_p.bashrc
+if [ -e  $alias_p  ] ; then
+  . $alias_p
+  echo 'load private bashrc cfg.'
 fi
 
 
