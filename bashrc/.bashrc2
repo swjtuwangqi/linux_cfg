@@ -4,16 +4,18 @@
 << BLOCK
 
 # # aditional bashrc config
-PC=161
+PC=wsl
 if [ $PC == 161 ]; then
     cfg_path=~/Documents/MyRepo/linux_cfg/bashrc/
+    alias_path=~/Documents/MyRepo/linux_cfg/bashrc/alias_p
 elif [ $PC == wsl ]; then
     cfg_path=/mnt/d/MyRepo/linux_cfg/bashrc/
+    alias_path=/mnt/d/MyRepo/linux_cfg/bashrc/alias_p
 fi
 
 if [ -e  $cfg_path.bashrc2 ] ; then
     . $cfg_path.bashrc2
-    . $cfg_path/alias_p
+    . $alias_path
     echo 'bash'
 else
     echo 'no bashrc2.'
