@@ -23,44 +23,65 @@ fi
 
 BLOCK
 
+
+
+# git branch
+function git_branch_func {
+branch="`git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //"`"
+if [ "${branch}" != "" ];then
+    if [ "${branch}" = "(no branch)" ];then
+        branch="`git rev-parse --short HEAD`..."
+    fi
+    echo "[$branch]"
+fi
+}
+# this is for debug git branch.
+# export PS1='>>> $(git_branch_func) >>>'
+
 # terminal prompt
-function my_color_prompt() { 
+function my_color_prompt() {
     # color define
-   local last_cmd=$?
-   local txtreset='$(tput sgr0)'
-   local txtbold='$(tput bold)'
-   local txtblack='$(tput setaf 0)'
-   local txtred='$(tput setaf 1)'
-   local txtgreen='$(tput setaf 2)'
-   local txtyellow='$(tput setaf 3)'
-   local txtblue='$(tput setaf 4)'
-   local txtpurple='$(tput setaf 5)'
-   local txtcyan='$(tput setaf 6)'
-   local txtwhite='$(tput setaf 7)'
-   # unicode "✗"
-   local fancyx='\342\234\227'
-   # unicode "✓"
-   local checkmark='\342\234\223'
+    local last_cmd=$?
+    local txtreset='$(tput sgr0)'
+    local txtbold='$(tput bold)'
+    local txtblack='$(tput setaf 0)'
+    local txtred='$(tput setaf 1)'
+    local txtgreen='$(tput setaf 2)'
+    local txtyellow='$(tput setaf 3)'
+    local txtblue='$(tput setaf 4)'
+    local txtpurple='$(tput setaf 5)'
+    local txtcyan='$(tput setaf 6)'
+    local txtwhite='$(tput setaf 7)'
+    # unicode "✗"
+    local fancyx='\342\234\227'
+    # unicode "✓"
+    local checkmark='\342\234\223'
 
-   # : Full date + full time (24h)
-    PS1="\[$txtbold\]\[$txtwhite\]\n\D{%A %d %B %Y %H:%M:%S}\n"
-   # : current path
-    PS1+="\[$txtcyan\]\\w"
-   # green git branch
-    PS1+="\[$txtyellow\]$(__git_ps1 ' (%s)')\[$txtwhite\]\n"
+    PS1_str=""
 
-   # a red "✗" for last cmd the error number
-   if [[ $last_cmd != 0 ]]; then
-      PS1+="\[$txtred\]$fancyx \[$txtwhite\]($last_cmd)"
-   fi
+    # : Full date + full time (24h)
+    PS1_str+="\[$txtcyan\][\D{%A %d %B %Y %H:%M:%S}] "
+    # git branch
+    # PS1_str+="\[$txtbold\]\[$txtpurple\]$(git_branch_func)"
+    PS1_str+='$(git_branch_func) \n'
+    # : current path
+    PS1_str+="\[$txtcyan\][\\w] "
 
-    PS1+=" \[$txtbold\]\[$txtblue\]\$ "
-   # input cmd color
-    PS1+=" \[$txtgreen\] "
+    # a red "✗" for last cmd the error number
+    if [[ $last_cmd != 0 ]]; then
+        PS1_str+="\[$txtred\]$fancyx \[$txtwhite\]($last_cmd)"
+    fi
+    PS1_str+="\n"
+    #
+    PS1_str+=" \[$txtbold\]\[$txtyellow\]>>> "
+    # input cmd color
+    PS1_str+="\[$txtgreen\]"
 
-   export PS1
+    PS1_str+="\[$txtgreen\]"
+
+    echo "$PS1_str"
 }
 
-my_color_prompt 
-
+# my_color_prompt
+export PS1=$(my_color_prompt)
 
