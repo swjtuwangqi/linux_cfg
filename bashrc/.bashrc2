@@ -23,7 +23,7 @@ fi
 
 BLOCK
 
-
+alias cd..="cd .."
 
 # git branch
 function git_branch_func {
